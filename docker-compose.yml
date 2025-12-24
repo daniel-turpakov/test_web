@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  mysite:
+    image: node:20-alpine
+    container_name: mysite-https
+    working_dir: /usr/src/app
+    volumes:
+      - ./server.js:/usr/src/app/server.js:ro
+      - ./certs:/certs:ro
+    ports:
+      - "4440:4440"
+    command: ["node", "server.js"]
