@@ -6,9 +6,11 @@ const options = {
   cert: fs.readFileSync("/certs/mysite.crt")
 };
 
+const PORT = process.env.PORT || 4440;
+
 https.createServer(options, (req, res) => {
   res.writeHead(200);
   res.end("Hello from Docker Compose on port 4440 with custom CA!");
-}).listen(4440, () => {
-  console.log("HTTPS server running on port 4440");
+}).listen(PORT, () => {
+  console.log(`HTTPS server running on port ${PORT}`);
 });
